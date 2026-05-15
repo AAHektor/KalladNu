@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserPlus, Key, PlusCircle, Rocket, ArrowRight } from 'lucide-react';
+import groupImg from './assets/team-image.jpg';
 
 const Group: React.FC = () => {
   return (
@@ -64,7 +65,7 @@ const Group: React.FC = () => {
 
         <div className="relative rounded-[2.5rem] overflow-hidden h-48 shadow-inner">
           <img 
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
+            src={groupImg} 
             alt="Team" 
             className="w-full h-full object-cover"
           />
