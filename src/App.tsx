@@ -3,6 +3,7 @@ import Layout from './components/layout/Layout'
 import './App.css'
 import Login from './features/auth/Login'
 import Register from './features/auth/Register'
+import Group from './features/group/Group'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
             <Route element={<Layout/>}>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/group" element={<Group/>} />
 
             </Route>
         </Routes>
