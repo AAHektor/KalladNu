@@ -5,6 +5,7 @@ import Login from './features/auth/Login'
 import Register from './features/auth/Register'
 import Group from './features/group/Group'
 import Dashboard from './features/dashboard/Dashboard'
+import Invitations from './features/invitations/Invitations'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/group" element={<Group/>} />
                 <Route path="/dashboard" element={<Dashboard/>} />
+                <Route path="/invitations" element={<Invitations/>} />
 
             </Route>
         </Routes>
