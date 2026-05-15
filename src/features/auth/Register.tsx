@@ -1,4 +1,3 @@
-import React from 'react'
 import RegisterForm from './components/RegisterForm'
 import waveicon from './assets/waveicon.svg'
 
