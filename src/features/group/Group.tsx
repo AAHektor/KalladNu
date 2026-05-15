@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserPlus, Key, PlusCircle, Rocket, ArrowRight } from 'lucide-react';
-import groupImg from './assets/team-image.jpg';
+import groupImg from './assets/joinGroup.avif';
 
 const Group: React.FC = () => {
   return (
