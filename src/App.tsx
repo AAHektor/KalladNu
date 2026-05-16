@@ -6,7 +6,8 @@ import Register from './features/auth/Register'
 import Group from './features/group/Group'
 import Dashboard from './features/dashboard/Dashboard'
 import Invitations from './features/invitations/Invitations'
-import SendInvite from './features/sendInvite/sendInvite'
+import SendInvite from './features/sendInvite/SendInvite'
+import SentInvitations from './features/sentInvitations/SentInvitations'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard/>} />
                 <Route path="/invitations" element={<Invitations/>} />
                 <Route path="/sendInvite" element={<SendInvite/>} />
+                <Route path="/sentInvitations" element={<SentInvitations/>} />
 
             </Route>
         </Routes>

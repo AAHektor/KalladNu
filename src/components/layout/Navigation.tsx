@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { 
   Menu, 
   X, 
@@ -16,7 +16,7 @@ const Layout = () => {
   const menuItems = [
     { icon: <LayoutDashboard size={20} />, label: 'Dashboard', path: '/dashboard' },
     { icon: <Mail size={20} />, label: 'Invitations', path: '/invitations' },
-    { icon: <Send size={20} />, label: 'Sent', path: '/sent' },
+    { icon: <Send size={20} />, label: 'Sent', path: '/sentInvitations' },
     { icon: <UserCircle size={20} />, label: 'Profile', path: '/profile' },
   ];
 
