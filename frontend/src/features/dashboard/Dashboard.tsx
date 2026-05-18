@@ -8,9 +8,7 @@ import {
   Megaphone, 
   LayoutDashboard, 
   Send, 
-  UserCircle,
-  Menu,
-  X 
+  UserCircle
 } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
@@ -18,7 +16,6 @@ const Dashboard: React.FC = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Menyval för att slippa duplicera kod
   const menuItems = [
     { icon: <LayoutDashboard size={24} />, label: 'Dashboard', active: true },
     { icon: <Mail size={24} />, label: 'Invitations', active: false },
