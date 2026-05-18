@@ -1,4 +1,3 @@
-import React from 'react'
 import { Calendar, Clock, CircleUser, Check } from 'lucide-react'
 
 const Invite = () => {

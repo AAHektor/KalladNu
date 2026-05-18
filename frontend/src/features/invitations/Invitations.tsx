@@ -1,4 +1,3 @@
-import React from 'react'
 import Invite from './components/Invite'
 
 const Invitations = () => {
