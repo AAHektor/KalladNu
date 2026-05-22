@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import LoginForm from "./components/LoginForm"
 import waveicon from './assets/waveicon.svg'
 
@@ -14,7 +15,7 @@ const Login = () => {
           <LoginForm />
 
           <div className='flex flex-col items-center pt-4'>
-            <p>Har du inget konto? <span className='text-blue-700 font-semibold'>Skapa konto</span></p>
+            <p>Har du inget konto? <Link to="/register" className='text-blue-700 font-semibold hover:underline'>Skapa konto</Link></p>
           </div>
         </div>
       </div>
@@ -31,7 +32,7 @@ const Login = () => {
             <div className="w-full max-w-md">
               <LoginForm />
               <div className='flex flex-col items-center pt-4'>
-                <p>Har du inget konto? <span className='text-blue-700 font-semibold'>Skapa konto</span></p>
+                <p>Har du inget konto? <Link to="/register" className='text-blue-700 font-semibold hover:underline'>Skapa konto</Link></p>
               </div>
             </div>
           </div>

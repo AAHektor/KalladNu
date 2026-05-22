@@ -1,41 +1,21 @@
-import React, { useState } from 'react';
-import { 
-  Calendar, 
-  Mail, 
-  Plus, 
-  Users, 
-  PartyPopper, 
-  Megaphone, 
-  LayoutDashboard, 
-  Send, 
-  UserCircle
-} from 'lucide-react';
+import { Calendar, Mail, Plus, Users, PartyPopper, Megaphone } from 'lucide-react'
+import { getStoredAuthUser } from '../../services/auth'
 
-const Dashboard: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  const menuItems = [
-    { icon: <LayoutDashboard size={24} />, label: 'Dashboard', active: true },
-    { icon: <Mail size={24} />, label: 'Invitations', active: false },
-    { icon: <Send size={24} />, label: 'Sent', active: false },
-    { icon: <UserCircle size={24} />, label: 'Profile', active: false },
-  ];
+const Dashboard = () => {
+    const user = getStoredAuthUser();
 
   return (
     <div className="min-h-screen bg-gray-50/50 pb-10 font-sans text-slate-900 relative">
       <div className="max-w-7xl mx-auto px-6 pt-10 md:pt-24">
-        
         <div className="pt-10 pb-8 md:pt-6">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">
             Välkommen tillbaka
           </p>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900">Hej, Anna!</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900">Hej, {user?.name ?? 'användare'}!</h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-          
           <div className="lg:col-span-2 grid grid-cols-2 gap-4 md:gap-6">
             <div className="bg-white p-6 md:p-10 rounded-[2.5rem] shadow-sm border border-gray-100 relative overflow-hidden">
               <div className="absolute left-0 top-1/4 bottom-1/4 w-1.5 bg-indigo-600 rounded-r-full"></div>
@@ -112,7 +92,7 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
