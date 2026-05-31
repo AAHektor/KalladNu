@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 3,
   "targets": {
     "net10.0": {
       "Humanizer.Core/2.14.1": {
@@ -3298,23 +3298,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Emma\\.nuget\\packages\\": {},
+    "C:\\Users\\aronh\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Emma\\Desktop\\Skola 2\\Examensarbete\\KalladNu\\api\\api.csproj",
+      "projectUniqueName": "C:\\Projects\\KalladAppen\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\Emma\\Desktop\\Skola 2\\Examensarbete\\KalladNu\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\Emma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Emma\\Desktop\\Skola 2\\Examensarbete\\KalladNu\\api\\obj\\",
+      "projectPath": "C:\\Projects\\KalladAppen\\api\\api.csproj",
+      "packagesPath": "C:\\Users\\aronh\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\KalladAppen\\api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Emma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aronh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3328,7 +3328,6 @@
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -3343,11 +3342,10 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net10.0": {
-        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
@@ -3406,7 +3404,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

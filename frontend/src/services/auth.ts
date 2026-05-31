@@ -53,7 +53,7 @@ export const storeAuth = (resp: AuthResponse, remember = false) => {
   const targetStorage = remember ? localStorage : sessionStorage
   targetStorage.setItem('authToken', resp.token)
   targetStorage.setItem('authUser', JSON.stringify(resp.user))
-  // clear the other storage to avoid confusion
+
   if (remember) {
     sessionStorage.removeItem('authToken')
     sessionStorage.removeItem('authUser')
@@ -123,5 +123,15 @@ export async function apiFetch<T = any>(path: string, opts?: RequestInit): Promi
     throw new Error(response.statusText || 'Request failed')
   }
 
-  return response.json() as Promise<T>
+  if (response.status === 204 || response.status === 205) {
+    return undefined as T
+  }
+
+  const responseText = await response.text()
+
+  if (!responseText.trim()) {
+    return undefined as T
+  }
+
+  return JSON.parse(responseText) as T
 }

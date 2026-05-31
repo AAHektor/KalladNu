@@ -29,10 +29,10 @@ const SentInvitations: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50/50 pb-24 font-sans text-slate-900 relative">
-      <div className="max-w-xl md:max-w-3xl mx-auto px-6 pt-6">
+      <div className="max-w-xl md:max-w-3xl mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-6 gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-slate-900 mb-2">Skickade kallelser</h1>
+            <h1 className="text-2xl font-extrabold text-slate-900 mb-2">Skickade kallelser</h1>
             <p className="text-gray-500 text-sm leading-relaxed">
               Hantera och följ upp dina utskickade inbjudningar.
             </p>
@@ -63,7 +63,7 @@ const SentInvitations: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {invitations.map((invite) => (
-            <div key={invite.id} className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100/80 flex flex-col justify-between transition-all overflow-hidden">
+            <div key={invite.id} className="bg-white rounded-4xl p-6 shadow-sm border border-gray-100/80 flex flex-col justify-between transition-all overflow-hidden">
               <div>
                 <div className="flex justify-between items-start gap-3 mb-4">
                   <h3 className="text-lg font-bold text-slate-800 leading-tight">{invite.title}</h3>

@@ -488,3 +488,8 @@ C:\Users\Emma\Desktop\Skola 2\Examensarbete\KalladNu\api_temp_build2\api.deps.js
 C:\Users\Emma\Desktop\Skola 2\Examensarbete\KalladNu\api_temp_build2\api.runtimeconfig.json
 C:\Users\Emma\Desktop\Skola 2\Examensarbete\KalladNu\api_temp_build2\api.dll
 C:\Users\Emma\Desktop\Skola 2\Examensarbete\KalladNu\api_temp_build2\api.pdb
+C:\Projects\KalladAppen\api\bin\Debug\net10.0\temp_build\api.deps.json
+C:\Projects\KalladAppen\api\bin\Debug\net10.0\temp_build\api.runtimeconfig.json
+C:\Projects\KalladAppen\api\bin\Debug\net10.0\temp_build\api.staticwebassets.endpoints.json
+C:\Projects\KalladAppen\api\bin\Debug\net10.0\temp_build\appsettings.Development.json
+C:\Projects\KalladAppen\api\bin\Debug\net10.0\temp_build\appsettings.json

@@ -13,7 +13,7 @@ const Invite = ({ invite, onRespond }: InviteProps) => {
     : 'bg-orange-100 text-orange-700'
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow-md mt-6">
+    <div className="bg-white p-4 rounded-4xl shadow-md mt-6">
       <div className="flex flex-row justify-between items-start gap-4">
         <div>
           <h4 className="text-blue-700 font-semibold">Ny förfrågan</h4>
