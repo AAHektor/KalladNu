@@ -42,7 +42,7 @@ const Invitations = () => {
 
   return (
     <div>
-      <h2 className="font-black text-xl pb-4">Mina inbjudningar</h2>
+      <h2 className="font-black text-2xl pb-4">Mina inbjudningar</h2>
       {loading && <p>Hämtar kallelser...</p>}
       {error && <p className="text-red-600">{error}</p>}
       {!loading && invitations.length === 0 && <p>Du har inga inbjudningar just nu.</p>}
