@@ -49,9 +49,31 @@ async function postAuth<T>(path: string, body: unknown): Promise<T> {
   return response.json() as Promise<T>
 }
 
-export const register = (request: RegisterRequest) => postAuth<AuthResponse>('/api/auth/register', request)
+export const storeAuth = (resp: AuthResponse, remember = false) => {
+  const targetStorage = remember ? localStorage : sessionStorage
+  targetStorage.setItem('authToken', resp.token)
+  targetStorage.setItem('authUser', JSON.stringify(resp.user))
+  // clear the other storage to avoid confusion
+  if (remember) {
+    sessionStorage.removeItem('authToken')
+    sessionStorage.removeItem('authUser')
+  } else {
+    localStorage.removeItem('authToken')
+    localStorage.removeItem('authUser')
+  }
+}
 
-export const login = (request: LoginRequest) => postAuth<AuthResponse>('/api/auth/login', request)
+export const register = async (request: RegisterRequest, remember = false) => {
+  const resp = await postAuth<AuthResponse>('/api/auth/register', request)
+  storeAuth(resp, remember)
+  return resp
+}
+
+export const login = async (request: LoginRequest, remember = false) => {
+  const resp = await postAuth<AuthResponse>('/api/auth/login', request)
+  storeAuth(resp, remember)
+  return resp
+}
 
 const getStoredValue = (key: string): string | null => localStorage.getItem(key) ?? sessionStorage.getItem(key)
 
@@ -78,4 +100,28 @@ export const clearAuth = () => {
   localStorage.removeItem('authUser')
   sessionStorage.removeItem('authToken')
   sessionStorage.removeItem('authUser')
+}
+
+export const getAuthHeaders = (): Record<string,string> => {
+  const token = getStoredAuthToken()
+  return token ? { Authorization: `Bearer ${token}` } : {}
+}
+
+export async function apiFetch<T = any>(path: string, opts?: RequestInit): Promise<T> {
+  const headers: Record<string,string> = {
+    'Content-Type': 'application/json',
+    ...(opts?.headers as Record<string,string> || {}),
+    ...getAuthHeaders(),
+  }
+
+  const response = await fetch(`${apiBaseUrl}${path}`, {
+    ...opts,
+    headers,
+  })
+
+  if (!response.ok) {
+    throw new Error(response.statusText || 'Request failed')
+  }
+
+  return response.json() as Promise<T>
 }

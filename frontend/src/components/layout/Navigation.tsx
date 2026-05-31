@@ -12,6 +12,24 @@ import {
 } from "lucide-react";
 import { clearAuth, getStoredAuthUser, isAuthenticated } from "../../services/auth";
 
+const Avatar = ({ user }: { user: { name?: string, email?: string } | null }) => {
+  const getInitials = () => {
+    if (!user) return "?"
+    if (user.name) {
+      const parts = user.name.trim().split(/\s+/)
+      return parts.slice(0,2).map(p=>p[0]?.toUpperCase() ?? '').join('')
+    }
+    if (user.email) return user.email[0].toUpperCase()
+    return "?"
+  }
+
+  return (
+    <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold text-xs sm:text-sm">
+      {getInitials()}
+    </div>
+  )
+}
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -42,52 +60,60 @@ const Navigation = () => {
             KalladNu
           </Link>
 
-          <nav className="hidden md:flex gap-8">
-            {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex items-center gap-2 font-bold text-sm transition-colors ${
-                  location.pathname === item.path ? 'text-indigo-600' : 'text-gray-400 hover:text-indigo-500'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex items-center gap-6">
+            <nav className="hidden md:flex gap-8">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`flex items-center gap-2 font-bold text-sm transition-colors ${
+                    location.pathname === item.path ? 'text-indigo-600' : 'text-gray-400 hover:text-indigo-500'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
 
-          <div className="hidden md:flex items-center gap-4">
-            <div className="flex items-center gap-2 rounded-full bg-gray-50 px-4 py-2 text-sm">
-              <BadgeCheck size={16} className={authenticated ? 'text-emerald-500' : 'text-gray-400'} />
-              <span className="text-gray-600">
-                {authenticated ? `Inloggad${authUser?.name ? ` som ${authUser.name}` : ''}` : 'Inte inloggad'}
-              </span>
+            <div className="md:flex items-center gap-4">
+              <div className="hidden md:flex items-center gap-2 rounded-full bg-gray-50 px-4 py-2 text-sm">
+                <BadgeCheck size={16} className={`${authenticated ? 'text-emerald-500' : 'text-gray-400'}`} />
+                <span className="text-gray-600">
+                  {authenticated ? `Inloggad${authUser?.name ? ` som ${authUser.name}` : ''}` : 'Inte inloggad'}
+                </span>
+              </div>
+
+              {authenticated ? (
+                <div className="flex items-center gap-3">
+                  <Link to="/profile" className="flex items-center gap-2">
+                    <Avatar user={authUser} />
+                  </Link>
+
+                  <button
+                    onClick={handleLogout}
+                    className="hidden md:flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-700"
+                  >
+                    <LogOut size={16} />
+                    Logga ut
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+                >
+                  Logga in
+                </Link>
+              )}
             </div>
-
-            {authenticated ? (
-              <button
-                onClick={handleLogout}
-                className="flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-700"
-              >
-                <LogOut size={16} />
-                Logga ut
-              </button>
-            ) : (
-              <Link
-                to="/login"
-                className="rounded-full bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
-              >
-                Logga in
-              </Link>
-            )}
+            <button
+              onClick={toggleMenu}
+              className="md:hidden p-2 text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors"
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
 
-          <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 text-indigo-600 hover:bg-indigo-50 rounded-xl transition-colors"
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
       </header>
 
