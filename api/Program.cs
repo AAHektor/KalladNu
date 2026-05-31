@@ -45,11 +45,23 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "https://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins(
+    "http://localhost:5173",
+    "https://localhost:5173",
+    "http://10.5.0.2:5173",
+    "https://10.5.0.2:5173")
+    .AllowAnyHeader()
+    .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<api.Data.ApplicationDbContext>();
+    db.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {

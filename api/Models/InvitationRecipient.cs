@@ -1,7 +1,12 @@
+using System;
+
 namespace api.Models;
 
-public record InvitationRecipient
+public class InvitationRecipient
 {
-    public string Email { get; init; } = string.Empty;
-    public InvitationStatus Status { get; init; }
+    public Guid Id { get; set; }
+    public Guid InvitationId { get; set; }
+    public Invitation? Invitation { get; set; }
+    public string Email { get; set; } = string.Empty;
+    public InvitationStatus Status { get; set; }
 }
