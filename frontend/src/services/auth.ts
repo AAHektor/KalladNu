@@ -20,8 +20,8 @@ export type LoginRequest = {
     password: string;
 };
 
-// const apiBaseUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:5277'
-const apiBaseUrl = import.meta.env.VITE_API_URL ?? "";
+// const apiBaseUrl = import.meta.env.VITE_API_URL ?? "http://localhost:5277";
+const apiBaseUrl = import.meta.env.VITE_API_URL ?? "https://kalladnuwebapp-f3d7dyhrfgcbbeed.belgiumcentral-01.azurewebsites.net";
 
 async function postAuth<T>(path: string, body: unknown): Promise<T> {
     const response = await fetch(`${apiBaseUrl}${path}`, {
@@ -113,7 +113,7 @@ export const getAuthHeaders = (): Record<string, string> => {
     return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
-export async function apiFetch<T = any>(
+export async function apiFetch<T = unknown>(
     path: string,
     opts?: RequestInit,
 ): Promise<T> {
