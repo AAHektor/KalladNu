@@ -7,8 +7,20 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Missing DefaultConnection connection string.");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    if (connectionString.Contains("Data Source=", StringComparison.OrdinalIgnoreCase))
+    {
+        options.UseSqlite(connectionString);
+    }
+    else
+    {
+        options.UseSqlServer(connectionString);
+    }
+});
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -45,13 +57,21 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>
     {
-        policy.WithOrigins(
-    "http://localhost:5173",
-    "https://localhost:5173",
-    "http://10.5.0.2:5173",
-    "https://10.5.0.2:5173")
-    .AllowAnyHeader()
-    .AllowAnyMethod();
+        var allowedOrigins = builder.Configuration
+            .GetSection("Cors:AllowedOrigins")
+            .Get<string[]>()
+            ??
+            [
+                "http://localhost:5173",
+                "https://localhost:5173",
+                "http://10.5.0.2:5173",
+                "https://10.5.0.2:5173",
+                "https://brave-pond-07f977c03.7.azurestaticapps.net"
+            ];
+
+        policy.WithOrigins(allowedOrigins)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
