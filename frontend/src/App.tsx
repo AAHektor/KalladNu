@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import './App.css'
 import Login from './features/auth/Login'
@@ -8,12 +8,18 @@ import Dashboard from './features/dashboard/Dashboard'
 import Invitations from './features/invitations/Invitations'
 import SendInvite from './features/sendInvite/SendInvite'
 import SentInvitations from './features/sentInvitations/SentInvitations'
+import { isAuthenticated } from './services/auth'
+
+const HomeRedirect = () => {
+  return <Navigate to={isAuthenticated() ? '/dashboard' : '/login'} replace />
+}
 
 function App() {
   return (
     <BrowserRouter>
         <Routes>
             <Route element={<Layout/>}>
+                <Route path="/" element={<HomeRedirect />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/group" element={<Group/>} />
@@ -21,6 +27,7 @@ function App() {
                 <Route path="/invitations" element={<Invitations/>} />
                 <Route path="/sendInvite" element={<SendInvite/>} />
                 <Route path="/sentInvitations" element={<SentInvitations/>} />
+                <Route path="*" element={<HomeRedirect />} />
 
             </Route>
         </Routes>
